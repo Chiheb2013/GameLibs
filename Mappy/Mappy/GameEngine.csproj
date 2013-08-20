@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D7913EE1-4BAD-4D51-92A1-318B19158D9C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mappy</RootNamespace>
+    <AssemblyName>Mappy</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="sfmlnet-graphics-2">
+      <HintPath>..\..\..\apis\SFML.Net-2.0\lib\sfmlnet-graphics-2.dll</HintPath>
+    </Reference>
+    <Reference Include="sfmlnet-window-2">
+      <HintPath>..\..\..\apis\SFML.Net-2.0\lib\sfmlnet-window-2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BitmapHelper.cs" />
+    <Compile Include="Clock.cs" />
+    <Compile Include="CollisionHelper.cs" />
+    <Compile Include="CoordinateSystemConverter.cs" />
+    <Compile Include="Effects\Background\Background.cs" />
+    <Compile Include="Effects\Background\ParallaxBackground.cs" />
+    <Compile Include="CollectionHelper.cs" />
+    <Compile Include="ExceptionHelper.cs" />
+    <Compile Include="IGameObject.cs" />
+    <Compile Include="IPhysicObject.cs" />
+    <Compile Include="Maps\AnimatedTile.cs" />
+    <Compile Include="Maps\GeneralWorldLoader.cs" />
+    <Compile Include="Maps\IWorldLoader.cs" />
+    <Compile Include="Maps\LayeredWorld.cs" />
+    <Compile Include="Maps\LayeredWorldLoader.cs" />
+    <Compile Include="Maps\RightTileCreator.cs" />
+    <Compile Include="Maps\World.cs" />
+    <Compile Include="Maps\TeleportationEventArgs.cs" />
+    <Compile Include="Maps\Teleporter.cs" />
+    <Compile Include="Maps\Tile.cs" />
+    <Compile Include="Maps\WorldLoader.cs" />
+    <Compile Include="Maps\WorldManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="States\IState.cs" />
+    <Compile Include="States\StateSystem.cs" />
+    <Compile Include="StringHelper.cs" />
+    <Compile Include="Texture\Animation\AnimationGroup.cs" />
+    <Compile Include="Texture\Animation\AnimationGroupAnimationManager.cs" />
+    <Compile Include="Texture\Animation\AnimationGroupManager.cs" />
+    <Compile Include="Texture\Frame.cs" />
+    <Compile Include="Texture\FramedTexture.cs" />
+    <Compile Include="Texture\FramedTextureManager.cs" />
+    <Compile Include="Texture\GeneralTexture.cs" />
+    <Compile Include="Texture\GeneralTextureManager.cs" />
+    <Compile Include="Texture\IRenderObject.cs" />
+    <Compile Include="Texture\TextureManager.cs" />
+    <Compile Include="Texts\TextManager.cs" />
+    <Compile Include="Texture\TextureType.cs" />
+    <Compile Include="Vector2D.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
