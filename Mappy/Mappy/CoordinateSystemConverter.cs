@@ -27,8 +27,12 @@ namespace Mappy
             int y = (int)worldCoords.Y;
             int x = (int)worldCoords.X;
 
-            int line = width * y + x;
+            if (x < 0 || x > width)
+                return -1;        // If x is not in the grid, return
+                                 // a negative value that won't be
+                                // processed downward. ;-)
             
+            int line = width * y + x;
             return line;
         }
 
