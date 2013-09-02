@@ -6,8 +6,6 @@ namespace Mappy.Texture
 {
     public static class TextureManager
     {
-        static string source = "TextureManager.AddTexture()";
-
         static Vector2D textureSize = new Vector2D(16, 16);
         static Dictionary<string, SFML.Graphics.Texture> textures = new Dictionary<string, SFML.Graphics.Texture>();
 
@@ -22,8 +20,8 @@ namespace Mappy.Texture
 
         public static void AddTexture(string name, string imagePath)
         {
-            ExceptionHelper<int>.AssertFileExists(imagePath, source);
-            ExceptionHelper<SFML.Graphics.Texture>.AssertIsNotInDictionnary(textures, name, source);
+            ExceptionHelper.AssertFileExists(imagePath, "TextureManager.AddTexture()");
+            ExceptionHelper.AssertIsNotInDictionnary<SFML.Graphics.Texture>(textures, name, "TextureManager.AddTexture()");
             
             SFML.Graphics.Texture texture = new SFML.Graphics.Texture(imagePath);
             textures.Add(name, texture);
@@ -31,7 +29,7 @@ namespace Mappy.Texture
 
         public static SFML.Graphics.Texture GetTexture(string name)
         {
-            ExceptionHelper<SFML.Graphics.Texture>.AssertIsInDictionnary(textures, name, "TextureManager.GetTexture()");
+            ExceptionHelper.AssertIsInDictionnary<SFML.Graphics.Texture>(textures, name, "TextureManager.GetTexture()");
             return textures[name];
         }
 

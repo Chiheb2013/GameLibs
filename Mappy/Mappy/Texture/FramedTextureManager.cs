@@ -19,15 +19,13 @@ namespace Mappy.Texture
 
         public static void AddTexture(string name, string tileset, Frame frame)
         {
-            ExceptionHelper<FramedTexture>.AssertIsNotInDictionnary(textures, name,
-                "FramedTextureManager.AddTexture()");
+            ExceptionHelper.AssertIsNotInDictionnary<FramedTexture>(textures, name, "FramedTextureManager.AddTexture()");
             textures.Add(name, new FramedTexture(tileset, frame));
         }
 
         public static FramedTexture GetTexture(string name)
         {
-            ExceptionHelper<FramedTexture>.AssertIsInDictionnary(textures, name,
-                "FramedTextureManager.GetTexture()");
+            ExceptionHelper.AssertIsInDictionnary<FramedTexture>(textures, name, "FramedTextureManager.GetTexture()");
             return textures[name];
         }
 
@@ -49,10 +47,10 @@ namespace Mappy.Texture
             string source = "FTM.LoadTexture()";
             string[] parts = line.Replace("ftexture:", "").Split(',');
 
-            int x = ExceptionHelper<int>.AssertIsInteger(parts[X], source);
-            int y = ExceptionHelper<int>.AssertIsInteger(parts[Y], source);
-            int width = ExceptionHelper<int>.AssertIsInteger(parts[HEIGHT], source);
-            int height = ExceptionHelper<int>.AssertIsInteger(parts[WIDTH], source);
+            int x = ExceptionHelper.AssertIsInteger(parts[X], source);
+            int y = ExceptionHelper.AssertIsInteger(parts[Y], source);
+            int width = ExceptionHelper.AssertIsInteger(parts[HEIGHT], source);
+            int height = ExceptionHelper.AssertIsInteger(parts[WIDTH], source);
             string name = parts[NAME];
             string tileset = parts[TILESET];
 

@@ -17,7 +17,7 @@ namespace Mappy.Texture
 
         public static void LoadTextures(string textureFile)
         {
-            ExceptionHelper<int>.AssertFileExists(textureFile, "GeneralTextureManager.LoadTextures()");
+            ExceptionHelper.AssertFileExists(textureFile, "GeneralTextureManager.LoadTextures()");
 
             TextureManager.LoadTextures(textureFile);
             FramedTextureManager.LoadTextures(textureFile);

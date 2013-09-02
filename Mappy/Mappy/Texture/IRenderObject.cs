@@ -1,4 +1,6 @@
-﻿namespace Mappy.Texture
+﻿using Mappy.Collisions;
+
+namespace Mappy.Texture
 {
     public interface IRenderObject : IPhysicObject
     {

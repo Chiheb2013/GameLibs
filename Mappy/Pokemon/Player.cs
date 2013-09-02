@@ -17,6 +17,8 @@ namespace Pokemon
 {
     class Player : IGameObject, IPhysicObject
     {
+        bool collided;
+        int prevDir;
         float deltaTime;
 
         Vector2D speed;
@@ -37,8 +39,9 @@ namespace Pokemon
         {
             this.parent = parent;
 
-            this.speed = new Vector2D(3, 3);
-            this.position = new Vector2D(10, 10);
+            this.collided = false;
+            this.speed = new Vector2D(1, 1);
+            this.position = new Vector2D(197, 67);
 
             animation = AnimationGroupManager.GetAnimationGroup("player_animation");
             animation.CurrentAnimation = "player_up";
@@ -56,44 +59,63 @@ namespace Pokemon
 
         private void RenderWindow_KeyPressed(object sender, SFML.Window.KeyEventArgs e)
         {
-            string animation = string.Empty;
             Vector2D copy = new Vector2D(position.X, position.Y);
 
-            if (e.Code == Keyboard.Key.Left)
+            if (!collided)
             {
-                copy.X -= speed.X;
-                animation = "player_left";
+                if (e.Code == Keyboard.Key.Left)
+                {
+                    prevDir = 0;
+                    copy.X -= speed.X;
+                }
+                if (e.Code == Keyboard.Key.Right)
+                {
+                    prevDir = 1;
+                    copy.X += speed.X;
+                }
+                if (e.Code == Keyboard.Key.Up)
+                {
+                    prevDir = 3;
+                    copy.Y -= speed.Y;
+                }
+                if (e.Code == Keyboard.Key.Down)
+                {
+                    prevDir = 2;
+                    copy.Y += speed.Y;
+                }
             }
-            else if (e.Code == Keyboard.Key.Right)
+            else
             {
-                copy.X += speed.X;
-                animation = "player_right";
+                if (e.Code == Keyboard.Key.Left && prevDir == 1)
+                    copy.X -= 2 * TextureManager.TextureSize.X;
+                if (e.Code == Keyboard.Key.Right && prevDir == 0)
+                    copy.X += 2 * TextureManager.TextureSize.X;
+                if (e.Code == Keyboard.Key.Up && prevDir == 2)
+                    copy.Y -= 2 * TextureManager.TextureSize.Y;
+                if (e.Code == Keyboard.Key.Down && prevDir == 3)
+                    copy.Y += 2 * TextureManager.TextureSize.Y;
             }
-            else if (e.Code == Keyboard.Key.Up)
-            {
-                copy.Y -= speed.Y;
-                animation = "player_up";
-            }
-            else if (e.Code == Keyboard.Key.Down)
-            {
-                copy.Y += speed.Y;
-                animation = "player_down";
-            }
-
-            Console.WriteLine("p(center) = " + Center.ToString());
 
             if (!Collides(copy))
             {
-                this.animation.SetCurrentAnimation(animation);
+                this.animation.SetCurrentAnimation(GetAnimation(e));
                 position = copy;
                 hitbox = bufferHitbox;
                 this.animation.Update(deltaTime);
+
+                collided = false;
             }
+            else
+                collided = true;
         }
 
-        public bool Collides(IPhysicObject hitter)
+        private string GetAnimation(KeyEventArgs e)
         {
-            throw new NotImplementedException();
+            return
+                e.Code == Keyboard.Key.Left ? "player_left" :
+                e.Code == Keyboard.Key.Right ? "player_right" :
+                e.Code == Keyboard.Key.Down ? "player_down" :
+                "player_up";
         }
 
         public bool Collides(Vector2D hitterPosition)
@@ -107,6 +129,11 @@ namespace Pokemon
                 return c;                                //====================
             }                                           //
             return true;                               //else, can't move
+        }
+
+        public bool Collides(IPhysicObject hitter)
+        {
+            throw new NotImplementedException();
         }
 
         private void RenderWindow_KeyReleased(object sender, KeyEventArgs e)

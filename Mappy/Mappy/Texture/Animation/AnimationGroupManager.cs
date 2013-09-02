@@ -13,15 +13,13 @@ namespace Mappy.Texture.Animation
 
         public static AnimationGroup GetAnimationGroup(string name)
         {
-            ExceptionHelper<AnimationGroup>.AssertIsInDictionnary(animationGroups, name,
-                "AGM.GetAnimationGroup()");
+            ExceptionHelper.AssertIsInDictionnary<AnimationGroup>(animationGroups, name, "AGM.GetAniatmionGroup()");
             return animationGroups[name];
         }
 
         public static void AddAnimationGroup(string name, AnimationGroup animationGroup)
         {
-            ExceptionHelper<AnimationGroup>.AssertIsNotInDictionnary(animationGroups, name,
-                "AGM.AddAnimationGroup()");
+            ExceptionHelper.AssertIsNotInDictionnary<AnimationGroup>(animationGroups, name, "AGM.AddAnimationGroup()");
             animationGroups.Add(name, animationGroup);
         }
 
@@ -57,8 +55,7 @@ namespace Mappy.Texture.Animation
             string[] parts = line.Replace("animation_group:", "").Split(',');
             string name = parts[NAME];
 
-            ExceptionHelper<AnimationGroup>.AssertIsNotInDictionnary(animationGroups, name,
-                "AGM.LoadAnimationGroup()");
+            ExceptionHelper.AssertIsNotInDictionnary<AnimationGroup>(animationGroups, name, "AGM.LoadAnimationGroup()");
 
             int interval = int.Parse(parts[INTERVAL]);
             int framesOnX = int.Parse(parts[FRAMES_ON_X]);

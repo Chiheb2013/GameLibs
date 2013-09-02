@@ -5,6 +5,7 @@ using SFML.Window;
 using SFML.Graphics;
 
 using Mappy.Texture;
+using Mappy.Collisions;
 
 namespace Mappy.Maps
 {
@@ -16,42 +17,16 @@ namespace Mappy.Maps
 
         Vector2D position;
         Vector2D screenPosition;
-
         GeneralTexture texture;
-        IntRect hitbox;
+
+        RectanglePhysicsObject hitbox;
 
         public bool IsHollow { get { return isHollow; } }
-
-        public IntRect Hitbox { get { return hitbox; } }
-        public Vector2D Center { get { return CollisionHelper.GetCenter(hitbox); } }
 
         public Vector2D Position { get { return position; } }
         public Vector2D ScreenPosition { get { return screenPosition; } }
 
-        /// <summary>
-        /// Creates a new instance of Tile
-        /// </summary>
-        /// <param name="mapx"></param>
-        /// <param name="mapy"></param>
-        /// <param name="isHollow"></param>
-        /// <param name="texture"></param>
-        /// <remarks>This creates a Tile with a hitbox which (x,y) is the center of the tile texture.
-        /// The formula is :
-        ///    int w = TextureManager.TextureSize.X
-        ///    int h = TextureManager.TextureSize.Y
-        ///    int x = position.X - w / 2
-        ///    int y = position.Y - h / 2
-        ///    hitbox = new Rectangle(x, y, w/2, h/2)</remarks>
-        public Tile(float mapx, float mapy, bool isHollow, string texture)
-        {
-            this.isHollow = isHollow;
-            this.position = new Vector2D(mapx, mapy);
-            this.screenPosition = CoordinateSystemConverter.WorldToPixels(this.position);
-            this.hitbox = CollisionHelper.CreateHitbox(this.screenPosition);
-
-            if (texture != "cmd:none")
-                GetSprite(texture);
-        }
+        public RectanglePhysicsObject Hitbox { get { return hitbox; } }
 
         /// <summary>
         /// Creates a new instance of Tile
@@ -71,7 +46,7 @@ namespace Mappy.Maps
             this.isHollow = isHollow;
             this.position = position;
             this.screenPosition = CoordinateSystemConverter.WorldToPixels(this.position);
-            this.hitbox = CollisionHelper.CreateHitbox(this.screenPosition);
+            this.hitbox = new RectanglePhysicsObject(position);
 
             if (texture != "cmd:none")
                 GetSprite(texture);
@@ -79,17 +54,12 @@ namespace Mappy.Maps
 
         public void Update(float deltaTime)
         {
+            hitbox.Update(deltaTime);
         }
 
-        public bool Collides(Vector2D hitterScreenPosition)
+        public bool CollidesWith(IPhysicObject other)
         {
-            IntRect objHitBox = new IntRect((int)hitterScreenPosition.X, (int)hitterScreenPosition.Y, hitbox.Width, hitbox.Height);
-            return hitbox.Intersects(objHitBox);
-        }
-
-        public bool Collides(IPhysicObject hitter)
-        {
-            return hitbox.Intersects(hitter.Hitbox);
+            return hitbox.CollidesWith(other);
         }
 
         public void Render(RenderWindow renderWindow)
@@ -105,7 +75,7 @@ namespace Mappy.Maps
 
         private void GetSprite(string texture)
         {
-            ExceptionHelper<SFML.Graphics.Texture>.AssertTextureExists(texture, "Tile.GetSprite()");
+            ExceptionHelper.AssertTextureExists(texture, "Tile.GetSprite()");
             this.texture = new GeneralTexture(texture, screenPosition);
         }
     }

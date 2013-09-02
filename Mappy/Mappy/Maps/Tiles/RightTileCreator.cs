@@ -13,7 +13,7 @@ namespace Mappy.Maps
             if (GeneralTextureManager.ContainsTexture(textureName))
                 return new Tile(isHollow, textureName, position);
             else if (CollectionHelper<AnimationGroup>.DictionnaryContains(AnimationGroupManager.AnimationGroups, textureName))
-                return new AnimatedTile(position.X, position.Y, isHollow, textureName);
+                return new AnimatedTile(isHollow, textureName, new Vector2D(position.X, position.Y));
 
             throw new KeyNotFoundException("Symbol '" + textureName + "' is neither " +
                 "a texture or an animation. source:RightTileCreator.GetRightTile()");

@@ -25,7 +25,7 @@ namespace Mappy.Maps
 
         public static World GetWorld(string world)
         {
-            ExceptionHelper<World>.AssertIsInDictionnary(worlds, world, "WorldManager.GetWorld()");
+            ExceptionHelper.AssertIsInDictionnary<World>(worlds, world, "WorldManager.GetWorld()");
             return worlds[world];
         }
 

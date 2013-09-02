@@ -9,16 +9,16 @@ using Mappy.Texture;
 
 namespace Mappy
 {
-    internal static class ExceptionHelper<T>
+    internal static class ExceptionHelper
     {
-        public static void AssertIsNotInDictionnary(IDictionary<string,T> dict, 
+        public static void AssertIsNotInDictionnary<T>(IDictionary<string,T> dict, 
             string name, string source)
         {
             if (CollectionHelper<T>.DictionnaryContains(dict, name))
                 ThrowExistanceException(name, source);
         }
 
-        public static void AssertIsInDictionnary(IDictionary<string, T> dict,
+        public static void AssertIsInDictionnary<T>(IDictionary<string, T> dict,
             string name, string source)
         {
             if (!CollectionHelper<T>.DictionnaryContains(dict, name))
@@ -47,6 +47,14 @@ namespace Mappy
             if (!File.Exists(path))
                 throw new FileNotFoundException("File '" + path + "' was not found. " +
                     "source:" + source);
+        }
+
+        public static T AssertIsT<T>(object second, string source)
+        {
+            if (second is T)
+                return (T)second;
+            throw new InvalidCastException("Object is not of type '" + typeof(T).ToString() + "'. " +
+                "source:" + source);
         }
 
         private static void ThrowExistanceException(string name, string source,
