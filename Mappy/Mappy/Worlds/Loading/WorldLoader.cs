@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using SFML.Window;
 using SFML.Graphics;
 
-namespace Mappy.Maps
+namespace Mappy.Worlds
 {
     public class WorldLoader : IWorldLoader
     {

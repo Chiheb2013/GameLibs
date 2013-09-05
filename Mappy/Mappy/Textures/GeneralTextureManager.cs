@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Mappy.Texture
+namespace Mappy.Textures
 {
     public static class GeneralTextureManager
     {
@@ -31,12 +31,12 @@ namespace Mappy.Texture
 
         public static bool ContainsTexture(string name, out TextureType type)
         {
-            type = TextureType.SFML; //if in collections, not dummy, if not dummy
-                                    //to respect 'out'
+            type = TextureType.SFML; //if in collections, type's not dummy
+                                    //if not in collection : type's dummy to respect 'out'
 
-            if (CollectionHelper<SFML.Graphics.Texture>.DictionnaryContains(TextureManager.Textures, name))
+            if (CollectionHelper.DictionaryContains<SFML.Graphics.Texture>(TextureManager.Textures, name))
                 return true;
-            else if (CollectionHelper<FramedTexture>.DictionnaryContains(FramedTextureManager.Textures, name))
+            else if (CollectionHelper.DictionaryContains<FramedTexture>(FramedTextureManager.Textures, name))
             {
                 type = TextureType.Framed;
                 return true;

@@ -1,7 +1,7 @@
 ﻿using SFML.Graphics;
 
 using Mappy.States;
-using Mappy.Texture;
+using Mappy.Textures;
 
 namespace Mappy.Effects.Background
 {

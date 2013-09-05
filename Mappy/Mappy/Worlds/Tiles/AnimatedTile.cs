@@ -1,10 +1,10 @@
 ﻿using SFML.Graphics;
 
-using Mappy.Texture;
+using Mappy.Textures;
 using Mappy.Collisions;
-using Mappy.Texture.Animation;
+using Mappy.Textures.Animation;
 
-namespace Mappy.Maps
+namespace Mappy.Worlds
 {
     public class AnimatedTile : Tile, IPhysicObject
     {

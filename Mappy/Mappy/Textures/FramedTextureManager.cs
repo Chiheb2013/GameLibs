@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Mappy.Texture
+namespace Mappy.Textures
 {
     public static class FramedTextureManager
     {
@@ -19,13 +19,13 @@ namespace Mappy.Texture
 
         public static void AddTexture(string name, string tileset, Frame frame)
         {
-            ExceptionHelper.AssertIsNotInDictionnary<FramedTexture>(textures, name, "FramedTextureManager.AddTexture()");
+            ExceptionHelper.AssertIsNotInDictionary<FramedTexture>(textures, name, "FramedTextureManager.AddTexture()");
             textures.Add(name, new FramedTexture(tileset, frame));
         }
 
         public static FramedTexture GetTexture(string name)
         {
-            ExceptionHelper.AssertIsInDictionnary<FramedTexture>(textures, name, "FramedTextureManager.GetTexture()");
+            ExceptionHelper.AssertIsInDictionary<FramedTexture>(textures, name, "FramedTextureManager.GetTexture()");
             return textures[name];
         }
 

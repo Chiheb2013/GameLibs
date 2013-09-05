@@ -22,7 +22,7 @@ namespace Mappy.Collisions
 
         public override bool CollidesWith(IPhysicObject other)
         {
-            RectanglePhysicsObject rpo = ExceptionHelper.AssertIsT<RectanglePhysicsObject>(other,"RectanglePhysicsObject.Collides()");
+            RectanglePhysicsObject rpo = ExceptionHelper.AssertIsTAndReturnCasted<RectanglePhysicsObject>(other,"RectanglePhysicsObject.Collides()");
             return rpo.hitbox.Intersects(this.hitbox);
         }
 

@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Mappy;
-using Mappy.Maps;
-using Mappy.Texture;
+using Mappy.Worlds;
+using Mappy.Textures;
 
 using SFML.Window;
 using SFML.Graphics;

@@ -9,7 +9,7 @@ using SFML.Graphics;
 
 using Mappy.Collisions;
 
-namespace Mappy.Maps
+namespace Mappy.Worlds
 {
     public class Teleporter : Tile, IPhysicObject
     {

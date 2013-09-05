@@ -25,7 +25,7 @@ namespace Mappy.Collisions
 
         public override bool CollidesWith(IPhysicObject other)
         {
-            CirclePhysicsObject cpo = ExceptionHelper.AssertIsT<CirclePhysicsObject>(other, "CirclePhysicsObject.Collides()");
+            CirclePhysicsObject cpo = ExceptionHelper.AssertIsTAndReturnCasted<CirclePhysicsObject>(other, "CirclePhysicsObject.Collides()");
             float distance = (float)(Math.Abs((decimal)((cpo.position - this.position).Magnitude)));
             // The distance is the magnitude of the vector linking this object's
             // position to the other's position.

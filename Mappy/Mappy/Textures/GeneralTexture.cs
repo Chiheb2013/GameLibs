@@ -1,4 +1,4 @@
-﻿namespace Mappy.Texture
+﻿namespace Mappy.Textures
 {
     class GeneralTexture : IGameObject
     {

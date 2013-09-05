@@ -9,8 +9,8 @@ using SFML.Graphics;
 
 using Mappy;
 using Mappy.States;
-using Mappy.Texture;
-using Mappy.Texture.Animation;
+using Mappy.Textures;
+using Mappy.Textures.Animation;
 
 namespace AnimationGroupTest
 {

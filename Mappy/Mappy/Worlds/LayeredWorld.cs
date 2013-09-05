@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 using SFML.Graphics;
 
-using Mappy.Texture;
+using Mappy.Textures;
 using Mappy.Collisions;
 
-namespace Mappy.Maps
+namespace Mappy.Worlds
 {
     public class LayeredWorld : World, IPhysicObject
     {
@@ -36,6 +36,9 @@ namespace Mappy.Maps
         // TODO : optimiz.
         // This function too will have to be optimized.
         //
+
+        // TODO : get this function to get the cell at correct position
+        //          with hitbox coordinates, or some kind of use of vector coords.
         public new bool CollidesWith(IPhysicObject hitter)
         {
             foreach (Tile tile in layers[Layer])

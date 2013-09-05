@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Mappy.Maps
+namespace Mappy.Worlds
 {
     public static class WorldManager
     {
@@ -25,7 +25,7 @@ namespace Mappy.Maps
 
         public static World GetWorld(string world)
         {
-            ExceptionHelper.AssertIsInDictionnary<World>(worlds, world, "WorldManager.GetWorld()");
+            ExceptionHelper.AssertIsInDictionary<World>(worlds, world, "WorldManager.GetWorld()");
             return worlds[world];
         }
 

@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Mappy.Texture.Animation
+namespace Mappy.Textures.Animation
 {
     public static class AnimationGroupManager
     {
@@ -13,13 +13,13 @@ namespace Mappy.Texture.Animation
 
         public static AnimationGroup GetAnimationGroup(string name)
         {
-            ExceptionHelper.AssertIsInDictionnary<AnimationGroup>(animationGroups, name, "AGM.GetAniatmionGroup()");
+            ExceptionHelper.AssertIsInDictionary<AnimationGroup>(animationGroups, name, "AGM.GetAniatmionGroup()");
             return animationGroups[name];
         }
 
         public static void AddAnimationGroup(string name, AnimationGroup animationGroup)
         {
-            ExceptionHelper.AssertIsNotInDictionnary<AnimationGroup>(animationGroups, name, "AGM.AddAnimationGroup()");
+            ExceptionHelper.AssertIsNotInDictionary<AnimationGroup>(animationGroups, name, "AGM.AddAnimationGroup()");
             animationGroups.Add(name, animationGroup);
         }
 
@@ -55,7 +55,7 @@ namespace Mappy.Texture.Animation
             string[] parts = line.Replace("animation_group:", "").Split(',');
             string name = parts[NAME];
 
-            ExceptionHelper.AssertIsNotInDictionnary<AnimationGroup>(animationGroups, name, "AGM.LoadAnimationGroup()");
+            ExceptionHelper.AssertIsNotInDictionary<AnimationGroup>(animationGroups, name, "AGM.LoadAnimationGroup()");
 
             int interval = int.Parse(parts[INTERVAL]);
             int framesOnX = int.Parse(parts[FRAMES_ON_X]);

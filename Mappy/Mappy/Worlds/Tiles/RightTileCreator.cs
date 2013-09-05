@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 
-using Mappy.Texture;
-using Mappy.Texture.Animation;
+using Mappy.Textures;
+using Mappy.Textures.Animation;
 
-namespace Mappy.Maps
+namespace Mappy.Worlds
 {
     internal static class RightTileCreator
     {
@@ -12,7 +12,7 @@ namespace Mappy.Maps
         {
             if (GeneralTextureManager.ContainsTexture(textureName))
                 return new Tile(isHollow, textureName, position);
-            else if (CollectionHelper<AnimationGroup>.DictionnaryContains(AnimationGroupManager.AnimationGroups, textureName))
+            else if (CollectionHelper.DictionaryContains<AnimationGroup>(AnimationGroupManager.AnimationGroups, textureName))
                 return new AnimatedTile(isHollow, textureName, new Vector2D(position.X, position.Y));
 
             throw new KeyNotFoundException("Symbol '" + textureName + "' is neither " +

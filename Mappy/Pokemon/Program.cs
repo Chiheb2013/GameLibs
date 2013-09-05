@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.IO;
 
 using SFML.Window;
 using SFML.Graphics;
 
 using Mappy;
-using Mappy.Maps;
+using Mappy.Worlds;
 using Mappy.States;
-using Mappy.Texture;
-using Mappy.Texture.Animation;
+using Mappy.Textures;
+using Mappy.Textures.Animation;
 
 namespace Pokemon
 {
@@ -37,15 +30,6 @@ namespace Pokemon
             InitializeStates();
 
             GameLoop();
-            //int line = CoordinateSystemConverter.PlaneToLine(new Vector2D(13, 2), 30);
-            //Console.WriteLine("p(13,2) = p(" + line + ")");
-
-            //Vector2D plane = CoordinateSystemConverter.LineToPlane(line, 30);
-            //Console.WriteLine("p(" + line + ") = p(" + plane.X + "," + plane.Y + ")");
-
-            //Console.WriteLine("p(" + plane.X + "," + plane.Y + ") = p(" + CoordinateSystemConverter.PlaneToLine(plane, 30) + ")");
-
-            //Console.ReadKey(true);
         }
 
         private static void CreateWindow()

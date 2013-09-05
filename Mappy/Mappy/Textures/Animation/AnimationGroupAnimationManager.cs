@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Mappy.Texture.Animation
+namespace Mappy.Textures.Animation
 {
     public static class AnimationGroupAnimationManager
     {

@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Mappy;
-using Mappy.Maps;
+using Mappy.Worlds;
 using Mappy.States;
-using Mappy.Texture;
-using Mappy.Texture.Animation;
+using Mappy.Textures;
+using Mappy.Textures.Animation;
 
 using SFML.Window;
 using SFML.Graphics;

@@ -4,12 +4,12 @@ using System.IO;
 using SFML.Window;
 using SFML.Graphics;
 
-using Mappy.Texture;
+using Mappy.Textures;
 using Mappy.Collisions;
 
-namespace Mappy.Maps
+namespace Mappy.Worlds
 {
-    public class Tile : IGameObject, IPhysicObject
+    public class Tile : IPhysicObject
     {
         public event EventHandler OnCollision;
 

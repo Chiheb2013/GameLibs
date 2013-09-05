@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using SFML.Graphics;
 
-namespace Mappy.Texture.Animation
+namespace Mappy.Textures.Animation
 {
     public class AnimationGroup : Sprite, IGameObject
     {

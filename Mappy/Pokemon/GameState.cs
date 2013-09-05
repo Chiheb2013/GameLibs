@@ -8,16 +8,16 @@ using SFML.Window;
 using SFML.Graphics;
 
 using Mappy;
-using Mappy.Maps;
+using Mappy.Worlds;
 using Mappy.States;
-using Mappy.Texture;
+using Mappy.Textures;
 
 namespace Pokemon
 {
     class GameState : IState
     {
         LayeredWorld world;
-        Player player;
+        SecondPlayer player;
 
         public LayeredWorld World { get { return world; } }
 
@@ -29,7 +29,7 @@ namespace Pokemon
         public void Initialize()
         {
             world = (LayeredWorld)WorldManager.GetWorld("grassland");
-            player = new Player(this);
+            player = new SecondPlayer(world);
         }
 
         public void Dispose()

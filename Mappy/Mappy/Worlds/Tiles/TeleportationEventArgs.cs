@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Mappy.Maps
+namespace Mappy.Worlds
 {
     public class TeleportationEventArgs : EventArgs
     {

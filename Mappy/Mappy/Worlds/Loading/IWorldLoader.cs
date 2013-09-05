@@ -1,4 +1,4 @@
-﻿namespace Mappy.Maps
+﻿namespace Mappy.Worlds
 {
     internal interface IWorldLoader
     {

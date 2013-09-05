@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Mappy.Texture
+namespace Mappy.Textures
 {
     public static class TextureManager
     {
@@ -21,7 +21,7 @@ namespace Mappy.Texture
         public static void AddTexture(string name, string imagePath)
         {
             ExceptionHelper.AssertFileExists(imagePath, "TextureManager.AddTexture()");
-            ExceptionHelper.AssertIsNotInDictionnary<SFML.Graphics.Texture>(textures, name, "TextureManager.AddTexture()");
+            ExceptionHelper.AssertIsNotInDictionary<SFML.Graphics.Texture>(textures, name, "TextureManager.AddTexture()");
             
             SFML.Graphics.Texture texture = new SFML.Graphics.Texture(imagePath);
             textures.Add(name, texture);
@@ -29,7 +29,7 @@ namespace Mappy.Texture
 
         public static SFML.Graphics.Texture GetTexture(string name)
         {
-            ExceptionHelper.AssertIsInDictionnary<SFML.Graphics.Texture>(textures, name, "TextureManager.GetTexture()");
+            ExceptionHelper.AssertIsInDictionary<SFML.Graphics.Texture>(textures, name, "TextureManager.GetTexture()");
             return textures[name];
         }
 

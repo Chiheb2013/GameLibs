@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Mappy.Texture;
+using Mappy.Textures;
 
-namespace Mappy.Maps
+namespace Mappy.Worlds
 {
     public class LayeredWorldLoader : IWorldLoader
     {

@@ -6,15 +6,15 @@ namespace Mappy
     {
         public static Vector2D PixelsToWorld(Vector2D pixelCoords)
         {
-            int x = (int)(pixelCoords.X / Texture.TextureManager.TextureSize.X);
-            int y = (int)(pixelCoords.Y / Texture.TextureManager.TextureSize.Y);
+            int x = (int)(pixelCoords.X / Textures.TextureManager.TextureSize.X);
+            int y = (int)(pixelCoords.Y / Textures.TextureManager.TextureSize.Y);
             return new Vector2D(x, y);
         }
 
         public static Vector2D WorldToPixels(Vector2D worldCoords)
         {
-            int x = (int)(worldCoords.X * Texture.TextureManager.TextureSize.X);
-            int y = (int)(worldCoords.Y * Texture.TextureManager.TextureSize.Y);
+            int x = (int)(worldCoords.X * Textures.TextureManager.TextureSize.X);
+            int y = (int)(worldCoords.Y * Textures.TextureManager.TextureSize.Y);
             return new Vector2D(x, y);
         }
 

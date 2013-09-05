@@ -1,6 +1,6 @@
 ﻿using SFML.Graphics;
 
-namespace Mappy.Texture
+namespace Mappy.Textures
 {
     public class FramedTexture : SFML.Graphics.Texture
     {

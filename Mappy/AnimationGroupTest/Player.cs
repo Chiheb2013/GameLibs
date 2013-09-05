@@ -8,8 +8,8 @@ using SFML.Window;
 using SFML.Graphics;
 
 using Mappy;
-using Mappy.Texture;
-using Mappy.Texture.Animation;
+using Mappy.Textures;
+using Mappy.Textures.Animation;
 
 namespace AnimationGroupTest
 {

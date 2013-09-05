@@ -8,9 +8,9 @@ using SFML.Window;
 using SFML.Graphics;
 
 using Mappy;
-using Mappy.Maps;
+using Mappy.Worlds;
 using Mappy.States;
-using Mappy.Texture;
+using Mappy.Textures;
 
 namespace TestTopView
 {

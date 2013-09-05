@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Mappy;
 using Mappy.States;
-using Mappy.Texture;
+using Mappy.Textures;
 
 namespace TestTopView
 {

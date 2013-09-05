@@ -1,28 +1,37 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using Mappy.Texture;
+using Mappy.Textures;
 
 namespace Mappy
 {
     internal static class ExceptionHelper
     {
-        public static void AssertIsNotInDictionnary<T>(IDictionary<string,T> dict, 
+        public static void AssertIsNotInDictionary<T>(IDictionary<string,T> dict, 
             string name, string source)
         {
-            if (CollectionHelper<T>.DictionnaryContains(dict, name))
+            if (CollectionHelper.DictionaryContains<T>(dict, name))
                 ThrowExistanceException(name, source);
         }
 
-        public static void AssertIsInDictionnary<T>(IDictionary<string, T> dict,
+        public static void AssertIsInDictionary<T>(IDictionary<string, T> dict,
             string name, string source)
         {
-            if (!CollectionHelper<T>.DictionnaryContains(dict, name))
+            if (!CollectionHelper.DictionaryContains<T>(dict, name))
                 ThrowExistanceException(name, source, "doesn't exist.");
+        }
+
+        public static void AssertIsInDictionary<T1, T2>(IDictionary<T1, T2> dict, T1 element, string source)
+        {
+            if (!CollectionHelper.DictionaryContains<T1, T2>(dict, element))
+                ThrowExistanceException("Element '" + typeof(T1).ToString(), source, "' doesn't exist.");
+        }
+
+        public static void AssertIsNotInDictionary<T1, T2>(IDictionary<T1, T2> dict, T1 element, string source)
+        {
+            if (!CollectionHelper.DictionaryContains<T1, T2>(dict, element))
+                ThrowExistanceException("Element '" + typeof(T1).ToString(), source, "' already exists");
         }
 
         public static int AssertIsInteger(string str, string source)
@@ -49,7 +58,7 @@ namespace Mappy
                     "source:" + source);
         }
 
-        public static T AssertIsT<T>(object second, string source)
+        public static T AssertIsTAndReturnCasted<T>(object second, string source)
         {
             if (second is T)
                 return (T)second;

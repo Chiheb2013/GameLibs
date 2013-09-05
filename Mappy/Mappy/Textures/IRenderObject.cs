@@ -1,6 +1,6 @@
 ﻿using Mappy.Collisions;
 
-namespace Mappy.Texture
+namespace Mappy.Textures
 {
     public interface IRenderObject : IPhysicObject
     {

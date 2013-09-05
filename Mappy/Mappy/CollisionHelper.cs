@@ -1,6 +1,6 @@
 ﻿using SFML.Graphics;
 
-using Mappy.Texture;
+using Mappy.Textures;
 
 namespace Mappy
 {

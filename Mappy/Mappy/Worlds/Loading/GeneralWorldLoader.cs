@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Mappy.Maps
+namespace Mappy.Worlds
 {
     public class GeneralWorldLoader
     {
