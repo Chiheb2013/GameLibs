@@ -46,7 +46,7 @@ namespace Mappy.Worlds
             this.isHollow = isHollow;
             this.position = position;
             this.screenPosition = CoordinateSystemConverter.WorldToPixels(this.position);
-            this.hitbox = new RectanglePhysicsObject(position);
+            this.hitbox = new RectanglePhysicsObject(position, true);
 
             if (texture != "cmd:none")
                 GetSprite(texture);

@@ -36,13 +36,10 @@ namespace Pokemon
         {
             if (e.Code == Keyboard.Key.Up)
                 character.Move(Direction.Up);
-            
             if (e.Code == Keyboard.Key.Down)
                 character.Move(Direction.Down);
-            
             if (e.Code == Keyboard.Key.Left)
                 character.Move(Direction.Left);
-
             if (e.Code == Keyboard.Key.Right)
                 character.Move(Direction.Right);
         }

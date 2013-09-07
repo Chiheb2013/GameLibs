@@ -8,16 +8,10 @@ namespace Mappy.Collisions
 
         public IntRect Hitbox { get { return hitbox; } }
 
-        public RectanglePhysicsObject(Vector2D position)
+        public RectanglePhysicsObject(Vector2D position, bool useTextureSize = false)
         {
-            this.position = position;
-            this.hitbox = CollisionHelper.CreateHitbox(position);
-        }
-
-        public RectanglePhysicsObject(Vector2D position, IntRect hitbox)
-        {
-            this.hitbox = hitbox;
-            this.position = position;
+            this.hitbox = CollisionHelper.CreateHitbox(position, useTextureSize);
+            this.position = new Vector2D(hitbox.Left, hitbox.Top);
         }
 
         public override bool CollidesWith(IPhysicObject other)
@@ -27,6 +21,11 @@ namespace Mappy.Collisions
         }
 
         public override void Update(float deltaTime)
+        {
+            UpdateHitboxPosition();
+        }
+
+        public void UpdateHitboxPosition()
         {
             hitbox.Top = (int)position.Y;
             hitbox.Left = (int)position.X;

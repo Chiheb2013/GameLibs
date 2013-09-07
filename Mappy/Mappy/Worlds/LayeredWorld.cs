@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using SFML.Graphics;
 
 using Mappy.Textures;
+using Mappy.Entities;
 using Mappy.Collisions;
 
 namespace Mappy.Worlds
@@ -27,7 +28,6 @@ namespace Mappy.Worlds
 
         public new void Update(float deltaTime)
         {
-            //This double loop doesn't please me, but I can't find something better.
             foreach (IGameObject[] layer in layers)
                 foreach (IGameObject tile in layer)
                     tile.Update(deltaTime);
@@ -36,15 +36,27 @@ namespace Mappy.Worlds
         // TODO : optimiz.
         // This function too will have to be optimized.
         //
-
-        // TODO : get this function to get the cell at correct position
-        //          with hitbox coordinates, or some kind of use of vector coords.
-        public new bool CollidesWith(IPhysicObject hitter)
+        public override bool CollidesWith(IPhysicObject hitter)
         {
-            foreach (Tile tile in layers[Layer])
-                if (!tile.IsHollow && tile.CollidesWith(hitter))
-                    return true;
+            foreach (Tile[] layer in layers)
+                foreach (Tile tile in layer)
+                    if (!tile.IsHollow && tile.CollidesWith(hitter)) return true;
             return false;
+        }
+
+        public override bool CollidesWith(IPhysicObject hitter, Direction direction)
+        {
+            PhysicsObject hit = (PhysicsObject)hitter;
+            Vector2D dirVec = VectorHelper.GetDirectionVector(direction);
+
+            int x = (int)(hit.Position.X / TextureManager.TextureSize.X + dirVec.X);
+            int y = (int)(hit.Position.Y / TextureManager.TextureSize.Y + dirVec.Y);
+            int index = CoordinateSystemConverter.PlaneToLine(new Vector2D(x, y), Width);
+
+            Tile tile = layers[Layer][index];
+
+            if (tile.IsHollow) return false;
+            return tile.CollidesWith(hit);
         }
 
         public new void Render(RenderWindow renderWindow)

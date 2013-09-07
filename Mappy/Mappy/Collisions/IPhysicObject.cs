@@ -1,4 +1,4 @@
-﻿using SFML.Graphics;
+﻿using Mappy.Entities;
 
 namespace Mappy.Collisions
 {

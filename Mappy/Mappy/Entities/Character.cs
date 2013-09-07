@@ -1,4 +1,6 @@
-﻿using SFML.Graphics;
+﻿using System;
+
+using SFML.Graphics;
 
 using Mappy.Worlds;
 using Mappy.Collisions;
@@ -53,12 +55,21 @@ namespace Mappy.Entities
 
         public void Move(Direction direction)
         {
+            Vector2D movement = VectorHelper.GetDirectionVector(direction, speed);
+
+            animation.SetCurrentAnimation(animationCouples[direction]);
+            animation.Update(deltaTime);
+
             if (!Collides(direction))
             {
-                Vector2D movement = GetMovement(direction);
-                animation.CurrentAnimation = animationCouples[direction];
-
                 position += movement;
+                base.UpdateHitboxPosition();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Collides");
+                Console.ForegroundColor = ConsoleColor.Gray;
             }
         }
 
@@ -69,20 +80,9 @@ namespace Mappy.Entities
                 LayeredWorld lworld = (LayeredWorld)world;
                 lworld.Layer = collisionLayer;
 
-                return lworld.CollidesWith(this);
+                return lworld.CollidesWith(this, direction);
             }
             return world.CollidesWith(this);
-        }
-
-        private Vector2D GetMovement(Direction direction)
-        {
-            if (direction == Direction.Up)
-                return new Vector2D(0, -speed.Y);
-            if (direction == Direction.Down)
-                return new Vector2D(0, speed.Y);
-            if (direction == Direction.Left)
-                return new Vector2D(-speed.X, 0);
-            return new Vector2D(speed.X, 0);
         }
 
         public override void Render(RenderWindow renderWindow)

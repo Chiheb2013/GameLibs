@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using SFML.Graphics;
 
+using Mappy.Entities;
 using Mappy.Collisions;
 
 namespace Mappy.Worlds
@@ -52,16 +53,17 @@ namespace Mappy.Worlds
                 tile.Update(deltaTime);
         }
 
-        // TODO : optimiz.
-        // This has to be optimized
-        //  - something like just checking the neighbouring tiles
-        //
-        public bool CollidesWith(IPhysicObject other)
+        public virtual bool CollidesWith(IPhysicObject other)
         {
             foreach (Tile tile in tiles)
                 if (!tile.IsHollow && tile.CollidesWith(other))
                     return true;
             return false;
+        }
+
+        public virtual bool CollidesWith(IPhysicObject other, Direction direction)
+        {
+            throw new NotImplementedException();
         }
 
         public void Render(RenderWindow renderWindow)

@@ -65,6 +65,7 @@
     <Compile Include="ExceptionHelper.cs" />
     <Compile Include="IGameObject.cs" />
     <Compile Include="Collisions\IPhysicObject.cs" />
+    <Compile Include="VectorHelper.cs" />
     <Compile Include="Worlds\Tiles\AnimatedTile.cs" />
     <Compile Include="Worlds\Loading\GeneralWorldLoader.cs" />
     <Compile Include="Worlds\Loading\IWorldLoader.cs" />

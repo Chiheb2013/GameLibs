@@ -6,12 +6,18 @@ namespace Mappy
 {
     public static class CollisionHelper
     {
-        public static IntRect CreateHitbox(Vector2D position)
+        public static IntRect CreateHitbox(Vector2D position, bool useTextureSize = false)
         {
             int w = (int)TextureManager.TextureSize.X;
             int h = (int)TextureManager.TextureSize.Y;
             int x = (int)position.X;
             int y = (int)position.Y;
+
+            if (useTextureSize)
+            {
+                x *= (int)TextureManager.TextureSize.X;
+                y *= (int)TextureManager.TextureSize.Y;
+            }
 
             IntRect hitbox = new IntRect(x, y, w, h);
             return hitbox;
